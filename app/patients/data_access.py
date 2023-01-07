@@ -11,7 +11,7 @@ def add_patient(patient: Patient):
     update_language_string(patient.hometown)
     with get_connection() as conn:
         with conn.cursor() as cur:
-            cur.execute('INSERT INTO patients (id, given_name, surname, date_of_birth, sex, country, hometown, phone, edited_at) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)',
+            cur.execute('INSERT INTO patients (id, given_name, surname, date_of_birth, sex, country, hometown, phone, medical_record_num, attention_datetime, attending_resources, origin, age, email, educational_status, religion, marital_status, occupation, mother_name, father_name, delivery_place, delivery_datetime, gestational_age, delivery_care, delivery_via, presentation, birthing_events, edited_at) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)',
                         [patient.id,
                          to_id(patient.given_name),
                          to_id(patient.surname),
@@ -20,6 +20,25 @@ def add_patient(patient: Patient):
                          to_id(patient.country),
                          to_id(patient.hometown),
                          patient.phone,
+                         patient.medical_record_num, 
+                         patient.attention_datetime, 
+                         patient.attending_resources, 
+                         patient.origin, 
+                         patient.age, 
+                         patient.email, 
+                         patient.educational_status, 
+                         patient.religion, 
+                         patient.marital_status, 
+                         patient.occupation, 
+                         patient.mother_name, 
+                         patient.father_name, 
+                         patient.delivery_place, 
+                         patient.delivery_datetime, 
+                         patient.gestational_age, 
+                         patient.delivery_care, 
+                         patient.delivery_via, 
+                         patient.presentation, 
+                         patient.birthing_events,
                          patient.edited_at
                          ])
 
@@ -64,7 +83,7 @@ def patient_from_key_data(given_name: str, surname: str, country: str, sex: str)
 
 def all_patient_data():
     query = """
-    SELECT id, given_name, surname, date_of_birth, sex, country, hometown, phone, edited_at FROM patients ORDER BY edited_at DESC LIMIT 25
+    SELECT id, given_name, surname, date_of_birth, sex, country, hometown, phone, medical_record_num, attention_datetime, attending_resources, origin, age, email, educational_status, religion, marital_status, occupation, mother_name, father_name, delivery_place, delivery_datetime, gestational_age, delivery_care, delivery_via, presentation, birthing_events, edited_at FROM patients ORDER BY edited_at DESC LIMIT 25
     """
     with get_connection() as conn:
         with conn.cursor() as cur:
@@ -92,7 +111,7 @@ def search_patients(given_name: str, surname: str, country: str, hometown: str):
 
     where_clause = ' AND '.join(where_clauses)
 
-    query = f"SELECT id, given_name, surname, date_of_birth, sex, country, hometown, phone, edited_at FROM patients WHERE {where_clause};"
+    query = f"SELECT id, given_name, surname, date_of_birth, sex, country, hometown, phone, medical_record_num, attention_datetime, attending_resources, origin, age, email, educational_status, religion, marital_status, occupation, mother_name, father_name, delivery_place, delivery_datetime, gestational_age, delivery_care, delivery_via, presentation, birthing_events, edited_at FROM patients WHERE {where_clause};"
     with get_connection() as conn:
         with conn.cursor() as cur:
             cur.execute(query, params)
@@ -100,7 +119,7 @@ def search_patients(given_name: str, surname: str, country: str, hometown: str):
 
 def patient_from_id(patient_id):
     query = """
-    SELECT given_name, surname, date_of_birth, sex, country, hometown, phone, edited_at FROM patients WHERE id = %s
+    SELECT given_name, surname, date_of_birth, sex, country, hometown, phone, medical_record_num, attention_datetime, attending_resources, origin, age, email, educational_status, religion, marital_status, occupation, mother_name, father_name, delivery_place, delivery_datetime, gestational_age, delivery_care, delivery_via, presentation, birthing_events, edited_at FROM patients WHERE id = %s
     """
     with get_connection() as conn:
         with conn.cursor() as cur:
@@ -108,7 +127,7 @@ def patient_from_id(patient_id):
             row = cur.fetchone()
             if row is None:
                 return None
-            given_name, surname, date_of_birth, sex, country, hometown, phone, edited_at = row
+            given_name, surname, date_of_birth, sex, country, hometown, phone, medical_record_num, attention_datetime, attending_resources, origin, age, email, educational_status, religion, marital_status, occupation, mother_name, father_name, delivery_place, delivery_datetime, gestational_age, delivery_care, delivery_via, presentation, birthing_events, edited_at = row
             return Patient(
                 id=patient_id,
                 given_name=LanguageString.from_id(given_name),
@@ -118,6 +137,25 @@ def patient_from_id(patient_id):
                 country=LanguageString.from_id(country),
                 hometown=LanguageString.from_id(hometown),
                 phone=phone,
+                medical_record_num = medical_record_num, 
+                attention_datetime =  attention_datetime, 
+                attending_resources =  attending_resources, 
+                origin =  origin, 
+                age =  age, 
+                email =  email, 
+                educational_status =  educational_status, 
+                religion =  religion, 
+                marital_status =  marital_status, 
+                occupation =  occupation, 
+                mother_name =  mother_name, 
+                father_name =  father_name, 
+                delivery_place =  delivery_place, 
+                delivery_datetime =  delivery_datetime, 
+                gestational_age =  gestational_age, 
+                delivery_care =  delivery_care, 
+                delivery_via =  delivery_via, 
+                presentation =  presentation, 
+                birthing_events =  birthing_events, 
                 edited_at=edited_at
             )
 

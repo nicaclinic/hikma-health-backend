@@ -4,7 +4,7 @@ from openpyxl import load_workbook
 from events.data_access import events_by_visit, camp_by_patient
 from patients.data_access import patient_from_id
 from users.data_access import user_name_by_id
-from events.event_export import write_vitals_event, write_medical_hx_event, write_examination_event, write_med1_event, write_med2_event, write_med3_event, write_med4_event, write_med5_event, write_physiotherapy_event, write_covid_19_event
+from events.event_export import write_vitals_event, write_medical_hx_event, write_examination_event, write_med1_event, write_med2_event, write_med3_event, write_med4_event, write_med5_event, write_physiotherapy_event, write_covid_19_event, write_emergency_attention_event, write_subsequent_evolution_event, write_nursing_note_event, write_ultrasound_consultation_event, write_laboratory_consultation_event, write_odontology_consultation_event, write_family_pathological_history_event, write_socioeconomic_situation_event, write_physical_exploration_event, write_non_pathological_history_event, write_gynecological_background_event, write_pathological_history_event, write_postatal_history_event, write_feeding_event, write_immunization_event, write_psychomotor_development_event, write_pediatric_pathological_event, write_pediatric_physical_event
 from datetime import datetime, timedelta
 from tempfile import NamedTemporaryFile
 import json
@@ -54,6 +54,26 @@ class SinglePatientDataExporter:
                 hometown=patient.hometown.get('en'),
                 home_country=patient.country.get('en'),
                 phone=patient.phone,
+
+                medical_record_num = patient.medical_record_num,
+                attention_datetime = patient.attention_datetime,
+                attending_resources = patient.attending_resources,
+                origin = patient.origin,
+                age = patient.age,
+                email = patient.email,
+                educational_status = patient.educational_status,
+                religion = patient.religion,
+                marital_status = patient.marital_status,
+                occupation = patient.occupation,
+                mother_name = patient.mother_name,
+                father_name = patient.father_name,
+                delivery_place = patient.delivery_place,
+                delivery_datetime = patient.delivery_datetime,
+                gestational_age = patient.gestational_age,
+                delivery_care = patient.delivery_care,
+                delivery_via = patient.delivery_via,
+                presentation = patient.presentation,
+                birthing_events = patient.birthing_events,
             )
             provider = user_name_by_id(visit.provider_id)
             if provider is not None:
@@ -115,6 +135,42 @@ class SinglePatientDataExporter:
                 elif event.event_type == 'Prescriptions':
                     self.write_text_event(
                         row, 'prescriptions_d', event.event_metadata)
+                elif event.event_type == 'Emergency Attention Sheet':
+                    write_emergency_attention_event(row, event)
+                elif event.event_type == 'Subsequent Evolution Note':
+                    write_subsequent_evolution_event(row, event)
+                elif event.event_type == 'Nursing Note':
+                    write_nursing_note_event(row, event)
+                elif event.event_type == 'Ultrasound Consultation':
+                    write_ultrasound_consultation_event(row, event)
+                elif event.event_type == 'Laboratory Consultation':
+                    write_laboratory_consultation_event(row, event)
+                elif event.event_type == 'Odontology Consultation':
+                    write_odontology_consultation_event(row, event)
+                elif event.event_type == 'Family Pathological History':
+                    write_family_pathological_history_event(row, event)
+                elif event.event_type == 'Socioeconomic Situation':
+                    write_socioeconomic_situation_event(row, event)
+                elif event.event_type == 'Pathological Personal History':
+                    write_pathological_history_event(row, event)
+                elif event.event_type == 'Non-pathological Personal History':
+                    write_non_pathological_history_event(row, event)
+                elif event.event_type == 'Gynecological-obstetric background':
+                    write_gynecological_background_event(row, event)
+                elif event.event_type == 'Physical exploration':
+                    write_physical_exploration_event(row, event)
+                elif event.event_type == 'Postnatal history':
+                    write_postatal_history_event(row, event)
+                elif event.event_type == 'Feeding':
+                    write_feeding_event(row, event)
+                elif event.event_type == 'Immunizations':
+                    write_immunization_event(row, event)
+                elif event.event_type == 'Psychomotor Development':
+                    write_psychomotor_development_event(row, event)
+                elif event.event_type == 'Pediatric Pathological Personal History':
+                    write_pediatric_pathological_event(row, event)
+                elif event.event_type == 'Pediatric Physical Exam':
+                    write_pediatric_physical_event(row, event)
             yield row
 
     def write_text_event(self, row, key, text):
