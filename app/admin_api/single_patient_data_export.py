@@ -59,7 +59,6 @@ class SinglePatientDataExporter:
                 attention_datetime = patient.attention_datetime,
                 attending_resources = patient.attending_resources,
                 origin = patient.origin,
-                age = patient.age,
                 email = patient.email,
                 educational_status = patient.educational_status,
                 religion = patient.religion,
