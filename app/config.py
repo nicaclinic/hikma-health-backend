@@ -29,3 +29,4 @@ if ENV == 'prod':
     EXPORTS_STORAGE_BUCKET = os.environ['EXPORTS_STORAGE_BUCKET']
     LOCAL_PHOTO_STORAGE_DIR = '/tmp/hikma_photos'
     DEFAULT_PROVIDER_ID_FOR_IMPORT = os.environ['DEFAULT_PROVIDER_ID']
+    
