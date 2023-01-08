@@ -29,7 +29,18 @@ def upgrade():
     INSERT INTO users (id, name, role, email, hashed_password, edited_at) 
     VALUES ('{str(uuid.uuid4())}', '{user_name_id}', 'super_admin', 'sam@hikmahealth.org', '$2b$12$VaVVnY5MtFLFE5KjNu.aMekKC2OyKet3i1v1pU3fbZOBsaA43hASy', '{datetime.now().isoformat()}')
     """)
+    user_name_id_2 = str(uuid.uuid4())
+    op.execute(f"INSERT INTO string_ids (id) VALUES ('{user_name_id_2}')")
+    op.execute(f"""
+    INSERT INTO string_content (id, language, content, edited_at) 
+    VALUES ('{user_name_id_2}', 'en', 'Sarah Rajab', '{datetime.now().isoformat()}')
+    """)
+    op.execute(f"""
+    INSERT INTO users (id, name, role, email, hashed_password, edited_at) 
+    VALUES ('{str(uuid.uuid4())}', '{user_name_id_2}', 'super_admin', 'sarah@shyp.studio', '$2b$12$KNBeouCsJHk8ykSdLcbFpuXJ6lzWAlF7RvhXDoZXbEINxbdvK.0bG', '{datetime.now().isoformat()}')
+    """)
 
 
 def downgrade():
     op.execute("DELETE FROM users WHERE email = 'sam@hikmahealth.org';")
+    op.execute("DELETE FROM users WHERE email = 'sarah@shyp.studio';")
