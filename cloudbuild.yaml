@@ -8,7 +8,7 @@ steps:
   - --plaintext-file=hikma-nica-clinic-ad2a156f35ed.json
   - --location=global
   - --keyring=nica-hikma-key-ring
-  - --key=hikma-nica-hikma-key
+  - --key=nica-hikma-key
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/hikma-health-backend:$COMMIT_SHA',
           '--build-arg', 'app_env_arg=prod',
