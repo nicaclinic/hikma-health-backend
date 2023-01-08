@@ -3,7 +3,7 @@ RUN apt-get update -y
 RUN apt-get install -y software-properties-common
 RUN add-apt-repository ppa:deadsnakes/ppa
 RUN apt-get update -y
-RUN apt-get install -y python3.7 python3.7-dev python3-pip build-essential postgresql-client libpq-dev wget git
+RUN apt-get install -y python3.7 python3.7-dev python3-pip python3-apt python3.7-distutils build-essential postgresql-client libpq-dev wget git
 
 COPY requirements.txt /
 
