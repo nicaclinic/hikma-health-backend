@@ -16,7 +16,7 @@ class Patient(ClientObject):
     hometown: LanguageString
     phone: str
     medical_record_num: str
-    attention_datetime: str
+    # attention_datetime: str
     attending_resources: str
     origin: str
     age: str
@@ -28,7 +28,7 @@ class Patient(ClientObject):
     mother_name: str
     father_name: str
     delivery_place: str
-    delivery_datetime: str
+    # delivery_datetime: str
     gestational_age: str
     delivery_care: str
     delivery_via: str
@@ -46,7 +46,7 @@ class Patient(ClientObject):
                 self.format_string(self.hometown),
                 self.phone,
                 self.medical_record_num, 
-                self.attention_datetime,
+                # self.attention_datetime,
                 self.attending_resources, 
                 self.origin, 
                 self.age, 
@@ -58,7 +58,7 @@ class Patient(ClientObject):
                 self.mother_name, 
                 self.father_name, 
                 self.delivery_place, 
-                self.delivery_datetime,
+                # self.delivery_datetime,
                 self.gestational_age, 
                 self.delivery_care, 
                 self.delivery_via, 
@@ -68,7 +68,7 @@ class Patient(ClientObject):
 
     @classmethod
     def client_insert_sql(cls):
-        return """INSERT INTO patients (id, given_name, surname, date_of_birth, sex, country, hometown, phone, medical_record_num, attention_datetime, attending_resources, origin, age, email, educational_status, religion, marital_status, occupation, mother_name, father_name, delivery_place, delivery_datetime, gestational_age, delivery_care, delivery_via, presentation, birthing_events, edited_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"""
+        return """INSERT INTO patients (id, given_name, surname, date_of_birth, sex, country, hometown, phone, medical_record_num, attending_resources, origin, age, email, educational_status, religion, marital_status, occupation, mother_name, father_name, delivery_place, gestational_age, delivery_care, delivery_via, presentation, birthing_events, edited_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
 
     def client_update_values(self):
         return [self.format_string(self.given_name),
@@ -79,7 +79,7 @@ class Patient(ClientObject):
                 self.format_string(self.hometown),
                 self.phone,
                 self.medical_record_num, 
-                self.attention_datetime,
+                # self.attention_datetime,
                 self.attending_resources, 
                 self.origin, 
                 self.age, 
@@ -91,7 +91,7 @@ class Patient(ClientObject):
                 self.mother_name, 
                 self.father_name, 
                 self.delivery_place, 
-                self.delivery_datetime,
+                # self.delivery_datetime,
                 self.gestational_age, 
                 self.delivery_care, 
                 self.delivery_via, 
@@ -102,7 +102,7 @@ class Patient(ClientObject):
 
     @classmethod
     def client_update_sql(cls):
-        return """UPDATE patients SET given_name = ?, surname = ?, date_of_birth = ?, sex = ?, country = ?, hometown = ?, phone = ?, medical_record_num = ? , attention_datetime = ? , attending_resources = ? , origin = ? , age = ? , email = ? , educational_status = ? , religion = ? , marital_status = ? , occupation = ? , mother_name = ? , father_name = ? , delivery_place = ? , delivery_datetime = ? , gestational_age = ? , delivery_care = ? , delivery_via = ? , presentation = ? , birthing_events = ? , edited_at = ? WHERE id = ?"""
+        return """UPDATE patients SET given_name = ?, surname = ?, date_of_birth = ?, sex = ?, country = ?, hometown = ?, phone = ?, medical_record_num = ? , attending_resources = ? , origin = ? , age = ? , email = ? , educational_status = ? , religion = ? , marital_status = ? , occupation = ? , mother_name = ? , father_name = ? , delivery_place = ?  , gestational_age = ? , delivery_care = ? , delivery_via = ? , presentation = ? , birthing_events = ? , edited_at = ? WHERE id = ?"""
             
 
     def server_insert_values(self):
@@ -115,7 +115,7 @@ class Patient(ClientObject):
                 self.format_string(self.hometown),
                 self.phone,
                 self.medical_record_num, 
-                self.attention_datetime,
+                # self.attention_datetime,
                 self.attending_resources, 
                 self.origin, 
                 self.age, 
@@ -127,7 +127,7 @@ class Patient(ClientObject):
                 self.mother_name, 
                 self.father_name, 
                 self.delivery_place, 
-                self.delivery_datetime,
+                # self.delivery_datetime,
                 self.gestational_age, 
                 self.delivery_care, 
                 self.delivery_via, 
@@ -137,7 +137,7 @@ class Patient(ClientObject):
 
     @classmethod
     def server_insert_sql(cls):
-        return """INSERT INTO patients (id, given_name, surname, date_of_birth, sex, country, hometown, phone, medical_record_num, attention_datetime, attending_resources, origin, age, email, educational_status, religion, marital_status, occupation, mother_name, father_name, delivery_place, delivery_datetime, gestational_age, delivery_care, delivery_via, presentation, birthing_events, edited_at) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"""
+        return """INSERT INTO patients (id, given_name, surname, date_of_birth, sex, country, hometown, phone, medical_record_num, attending_resources, origin, age, email, educational_status, religion, marital_status, occupation, mother_name, father_name, delivery_place, gestational_age, delivery_care, delivery_via, presentation, birthing_events, edited_at) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
 
     def server_update_values(self):
         return [self.format_string(self.given_name),
@@ -148,7 +148,7 @@ class Patient(ClientObject):
                 self.format_string(self.hometown),
                 self.phone,
                 self.medical_record_num, 
-                self.attention_datetime,
+                # self.attention_datetime,
                 self.attending_resources, 
                 self.origin, 
                 self.age, 
@@ -160,7 +160,7 @@ class Patient(ClientObject):
                 self.mother_name, 
                 self.father_name, 
                 self.delivery_place, 
-                self.delivery_datetime,
+                # self.delivery_datetime,
                 self.gestational_age, 
                 self.delivery_care, 
                 self.delivery_via, 
@@ -171,7 +171,7 @@ class Patient(ClientObject):
 
     @classmethod
     def server_update_sql(cls):
-        return """UPDATE patients SET given_name = %s, surname = %s, date_of_birth = %s, sex = %s, country = %s, hometown = %s, phone = %s, medical_record_num = %s , attention_datetime = %s , attending_resources = %s , origin = %s , age = %s , email = %s , educational_status = %s , religion = %s , marital_status = %s , occupation = %s , mother_name = %s , father_name = %s , delivery_place = %s , delivery_datetime = %s , gestational_age = %s , delivery_care = %s , delivery_via = %s , presentation = %s , birthing_events = %s , edited_at = %s WHERE id = %s"""
+        return """UPDATE patients SET given_name = %s, surname = %s, date_of_birth = %s, sex = %s, country = %s, hometown = %s, phone = %s, medical_record_num = %s , attending_resources = %s , origin = %s , age = %s , email = %s , educational_status = %s , religion = %s , marital_status = %s , occupation = %s , mother_name = %s , father_name = %s , delivery_place = %s , gestational_age = %s , delivery_care = %s , delivery_via = %s , presentation = %s , birthing_events = %s , edited_at = %s WHERE id = %s"""
 
 
     @classmethod
@@ -185,7 +185,6 @@ class Patient(ClientObject):
                 ('hometown', cls.make_language_string),
                 ('phone', identity),
                 ('medical_record_num', identity)
-                ('attention_datetime', identity)
                 ('attending_resources', identity)
                 ('origin', identity)
                 ('age', identity)
@@ -197,7 +196,6 @@ class Patient(ClientObject):
                 ('mother_name', identity)
                 ('father_name', identity)
                 ('delivery_place', identity)
-                ('delivery_datetime', identity)
                 ('gestational_age', identity)
                 ('delivery_care', identity)
                 ('delivery_via', identity)
@@ -216,7 +214,6 @@ class Patient(ClientObject):
                 ('hometown', cls.make_language_string),
                 ('phone', identity),
                 ('medical_record_num', identity)
-                ('attention_datetime', identity),
                 ('attending_resources', identity)
                 ('origin', identity)
                 ('age', identity)
@@ -228,7 +225,6 @@ class Patient(ClientObject):
                 ('mother_name', identity)
                 ('father_name', identity)
                 ('delivery_place', identity)
-                ('delivery_datetime', identity),
                 ('gestational_age', identity)
                 ('delivery_care', identity)
                 ('delivery_via', identity)
@@ -242,8 +238,8 @@ class Patient(ClientObject):
 
     @classmethod
     def from_db_row(cls, db_row):
-        id, given_name, surname, date_of_birth, sex, country, hometown, phone, medical_record_num, attention_datetime, attending_resources, origin, age, email, educational_status, religion, marital_status, occupation, mother_name, father_name, delivery_place, delivery_datetime, gestational_age, delivery_care, delivery_via, presentation, birthing_events, edited_at = db_row
-        return cls(id, LanguageString.from_id(given_name), LanguageString.from_id(surname), date_of_birth, sex, LanguageString.from_id(country), LanguageString.from_id(hometown), phone, medical_record_num, attention_datetime, attending_resources, origin, age, email, educational_status, religion, marital_status, occupation, mother_name, father_name, delivery_place, delivery_datetime, gestational_age, delivery_care, delivery_via, presentation, birthing_events, edited_at)    
+        id, given_name, surname, date_of_birth, sex, country, hometown, phone, medical_record_num, attending_resources, origin, age, email, educational_status, religion, marital_status, occupation, mother_name, father_name, delivery_place, gestational_age, delivery_care, delivery_via, presentation, birthing_events, edited_at = db_row
+        return cls(id, LanguageString.from_id(given_name), LanguageString.from_id(surname), date_of_birth, sex, LanguageString.from_id(country), LanguageString.from_id(hometown), phone, medical_record_num, attending_resources, origin, age, email, educational_status, religion, marital_status, occupation, mother_name, father_name, delivery_place, gestational_age, delivery_care, delivery_via, presentation, birthing_events, edited_at)    
 
     def to_dict(self):
         return {
@@ -256,7 +252,7 @@ class Patient(ClientObject):
             'hometown': self.hometown.to_dict() if self.hometown is not None else None,
             'phone': self.phone,
             'medical_record_num': self.medical_record_num, 
-            'attention_datetime': self.attention_datetime, 
+            # 'attention_datetime': self.attention_datetime, 
             'attending_resources': self.attending_resources, 
             'origin': self.origin, 
             'age': self.age, 
@@ -268,7 +264,7 @@ class Patient(ClientObject):
             'mother_name': self.mother_name, 
             'father_name': self.father_name, 
             'delivery_place': self.delivery_place, 
-            'delivery_datetime': self.delivery_datetime, 
+            # 'delivery_datetime': self.delivery_datetime, 
             'gestational_age': self.gestational_age, 
             'delivery_care': self.delivery_care, 
             'delivery_via': self.delivery_via, 

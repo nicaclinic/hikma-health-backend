@@ -37,7 +37,7 @@ COLUMNS = [
     # 'home_country',
     'phone',
     'email',
-    'attention_datetime',
+    # 'attention_datetime',
     'attending_resources',
     'educational_status',
     'religion',
@@ -46,7 +46,7 @@ COLUMNS = [
     'mother_name',
     'father_name',
     'delivery_place',
-    'delivery_datetime',
+    # 'delivery_datetime',
     'gestational_age',
     'delivery_care',
     'delivery_via',
@@ -463,7 +463,7 @@ class PatientDataRow:
     # home_country : str = None
     phone : str = None
     email : str = None
-    attention_datetime : str = None
+    # attention_datetime : str = None
     attending_resources : str = None
     educational_status : str = None
     religion : str = None
@@ -472,7 +472,7 @@ class PatientDataRow:
     mother_name : str = None
     father_name : str = None
     delivery_place : str = None
-    delivery_datetime : str = None
+    # delivery_datetime : str = None
     gestational_age : str = None
     delivery_care : str = None
     delivery_via : str = None
