@@ -203,7 +203,7 @@ class Patient(ClientObject):
                 ('delivery_via', identity),
                 ('presentation', identity),
                 ('birthing_events', identity),
-                ('edited_at', identity)],
+                ('edited_at', identity)]
 
     @classmethod
     def db_columns_from_client(cls):
