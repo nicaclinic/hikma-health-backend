@@ -56,7 +56,7 @@ class SinglePatientDataExporter:
                 phone=patient.phone,
 
                 medical_record_num = patient.medical_record_num,
-                attention_datetime = patient.attention_datetime,
+                attention_datetime = patient.attention_datetime.strftime("%d-%m-%Y"),
                 attending_resources = patient.attending_resources,
                 origin = patient.origin,
                 email = patient.email,
@@ -67,7 +67,7 @@ class SinglePatientDataExporter:
                 mother_name = patient.mother_name,
                 father_name = patient.father_name,
                 delivery_place = patient.delivery_place,
-                delivery_datetime = patient.delivery_datetime,
+                delivery_datetime = patient.delivery_datetime.strftime("%d-%m-%Y"),
                 gestational_age = patient.gestational_age,
                 delivery_care = patient.delivery_care,
                 delivery_via = patient.delivery_via,
