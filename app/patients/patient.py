@@ -68,7 +68,7 @@ class Patient(ClientObject):
 
     @classmethod
     def client_insert_sql(cls):
-        return """INSERT INTO patients (id, given_name, surname, date_of_birth, sex, country, hometown, phone, medical_record_num, attention_datetime, attending_resources, origin, age, email, educational_status, religion, marital_status, occupation, mother_name, father_name, delivery_place, delivery_datetime, gestational_age, delivery_care, delivery_via, presentation, birthing_events, edited_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"""
+        return """INSERT INTO patients (id, given_name, surname, date_of_birth, sex, country, hometown, phone, medical_record_num, attention_datetime, attending_resources, origin, age, email, educational_status, religion, marital_status, occupation, mother_name, father_name, delivery_place, delivery_datetime, gestational_age, delivery_care, delivery_via, presentation, birthing_events, edited_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
 
     def client_update_values(self):
         return [self.format_string(self.given_name),
@@ -137,7 +137,7 @@ class Patient(ClientObject):
 
     @classmethod
     def server_insert_sql(cls):
-        return """INSERT INTO patients (id, given_name, surname, date_of_birth, sex, country, hometown, phone, medical_record_num, attention_datetime, attending_resources, origin, age, email, educational_status, religion, marital_status, occupation, mother_name, father_name, delivery_place, delivery_datetime, gestational_age, delivery_care, delivery_via, presentation, birthing_events, edited_at) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"""
+        return """INSERT INTO patients (id, given_name, surname, date_of_birth, sex, country, hometown, phone, medical_record_num, attention_datetime, attending_resources, origin, age, email, educational_status, religion, marital_status, occupation, mother_name, father_name, delivery_place, delivery_datetime, gestational_age, delivery_care, delivery_via, presentation, birthing_events, edited_at) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
 
     def server_update_values(self):
         return [self.format_string(self.given_name),
@@ -184,26 +184,26 @@ class Patient(ClientObject):
                 ('country', cls.make_language_string),
                 ('hometown', cls.make_language_string),
                 ('phone', identity),
-                ('medical_record_num', identity)
-                ('attention_datetime', identity)
-                ('attending_resources', identity)
-                ('origin', identity)
-                ('age', identity)
-                ('email', identity)
-                ('educational_status', identity)
-                ('religion', identity)
-                ('marital_status', identity)
-                ('occupation', identity)
-                ('mother_name', identity)
-                ('father_name', identity)
-                ('delivery_place', identity)
-                ('delivery_datetime', identity)
-                ('gestational_age', identity)
-                ('delivery_care', identity)
-                ('delivery_via', identity)
-                ('presentation', identity)
-                ('birthing_events', identity)
-                ('edited_at', identity)]
+                ('medical_record_num', identity),
+                ('attention_datetime', identity),
+                ('attending_resources', identity),
+                ('origin', identity),
+                ('age', identity),
+                ('email', identity),
+                ('educational_status', identity),
+                ('religion', identity),
+                ('marital_status', identity),
+                ('occupation', identity),
+                ('mother_name', identity),
+                ('father_name', identity),
+                ('delivery_place', identity),
+                ('delivery_datetime', identity),
+                ('gestational_age', identity),
+                ('delivery_care', identity),
+                ('delivery_via', identity),
+                ('presentation', identity),
+                ('birthing_events', identity),
+                ('edited_at', identity)],
 
     @classmethod
     def db_columns_from_client(cls):
@@ -215,25 +215,25 @@ class Patient(ClientObject):
                 ('country', cls.make_language_string),
                 ('hometown', cls.make_language_string),
                 ('phone', identity),
-                ('medical_record_num', identity)
+                ('medical_record_num', identity),
                 ('attention_datetime', identity),
-                ('attending_resources', identity)
-                ('origin', identity)
-                ('age', identity)
-                ('email', identity)
-                ('educational_status', identity)
-                ('religion', identity)
-                ('marital_status', identity)
-                ('occupation', identity)
-                ('mother_name', identity)
-                ('father_name', identity)
-                ('delivery_place', identity)
+                ('attending_resources', identity),
+                ('origin', identity),
+                ('age', identity),
+                ('email', identity),
+                ('educational_status', identity),
+                ('religion', identity),
+                ('marital_status', identity),
+                ('occupation', identity),
+                ('mother_name', identity),
+                ('father_name', identity),
+                ('delivery_place', identity),
                 ('delivery_datetime', identity),
-                ('gestational_age', identity)
-                ('delivery_care', identity)
-                ('delivery_via', identity)
-                ('presentation', identity)
-                ('birthing_events', identity)
+                ('gestational_age', identity),
+                ('delivery_care', identity),
+                ('delivery_via', identity),
+                ('presentation', identity),
+                ('birthing_events', identity),
                 ('edited_at', parse_client_timestamp)]
 
     @classmethod
