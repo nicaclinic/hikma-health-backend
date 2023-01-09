@@ -36,6 +36,16 @@ def add_demo_clinic():
 
     return jsonify({'clinic': "EMA"})
 
+@admin_api.route('/add_nica_clinic', methods=['GET'])
+def add_nica_clinic():
+    clinic = Clinic(id=str(uuid.uuid4()), edited_at=datetime.now(), name=LanguageString(
+    id=str(uuid.uuid4()), content_by_language={
+        'en': 'NICA_CLINIC'
+    }))
+    add_clinic(clinic)
+
+    return jsonify({'clinic': "EMA"})
+
 @admin_api.route('/empty_db', methods=['GET'])
 @admin_authenticated
 def empty_db(_admin_user):
