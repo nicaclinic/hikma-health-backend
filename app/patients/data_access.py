@@ -159,3 +159,12 @@ def patient_from_id(patient_id):
                 edited_at=edited_at
             )
 
+
+
+def delete_all_patients_data():
+    with get_connection() as conn:
+        with conn.cursor() as cur:
+            cur.execute('DELETE FROM visits WHERE 1 = 1')
+            cur.execute('DELETE FROM patients WHERE 1 = 1')
+
+

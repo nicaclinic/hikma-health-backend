@@ -3,18 +3,50 @@ from web_util import assert_data_has_keys, admin_authenticated
 from web_errors import WebError
 from users.user import User
 from patients.patient import Patient
-from patients.data_access import all_patient_data, search_patients
+from patients.data_access import all_patient_data, search_patients, delete_all_patients_data
 from users.data_access import all_user_data, add_user, delete_user_by_id, user_data_by_email
 from language_strings.language_string import LanguageString
 from admin_api.patient_data_export import most_recent_export
 from admin_api.single_patient_data_export import single_patient_export
+from admin_api.patient_data_export import PatientDataExporter
 
 import uuid
 import bcrypt
 import psycopg2.errors
 
 
+from clinics.clinic import Clinic
+from clinics.data_access import add_clinic, all_clinic_data
+import uuid
+from datetime import datetime
+
+from config import EXPORTS_STORAGE_BUCKET
+from google.cloud import storage
+
+
 admin_api = Blueprint('admin_api', __name__, url_prefix='/admin_api')
+
+@admin_api.route('/add_clinic', methods=['GET'])
+def add_demo_clinic():
+    clinic = Clinic(id=str(uuid.uuid4()), edited_at=datetime.now(), name=LanguageString(
+    id=str(uuid.uuid4()), content_by_language={
+        'en': 'EMA'
+    }))
+    add_clinic(clinic)
+
+    return jsonify({'clinic': "EMA"})
+
+@admin_api.route('/empty_db', methods=['GET'])
+@admin_authenticated
+def empty_db(_admin_user):
+    delete_all_patients_data()
+
+    return jsonify({'status': "Done"})
+
+@admin_api.route('/list_clinics', methods=['GET'])
+def list_clinics():
+    all_clinics = [Clinic.from_db_row(r).to_dict() for r in all_clinic_data()]
+    return jsonify({'clinics': all_clinics})
 
 
 @admin_api.route('/login', methods=['POST'])
