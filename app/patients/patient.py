@@ -16,7 +16,7 @@ class Patient(ClientObject):
     hometown: LanguageString
     phone: str
     medical_record_num: str
-    attention_datetime: datetime
+    attention_datetime: str
     attending_resources: str
     origin: str
     age: str
@@ -28,7 +28,7 @@ class Patient(ClientObject):
     mother_name: str
     father_name: str
     delivery_place: str
-    delivery_datetime: datetime
+    delivery_datetime: str
     gestational_age: str
     delivery_care: str
     delivery_via: str
@@ -46,7 +46,7 @@ class Patient(ClientObject):
                 self.format_string(self.hometown),
                 self.phone,
                 self.medical_record_num, 
-                self.format_ts(self.attention_datetime),
+                self.attention_datetime,
                 self.attending_resources, 
                 self.origin, 
                 self.age, 
@@ -58,7 +58,7 @@ class Patient(ClientObject):
                 self.mother_name, 
                 self.father_name, 
                 self.delivery_place, 
-                self.format_ts(self.delivery_datetime),
+                self.delivery_datetime,
                 self.gestational_age, 
                 self.delivery_care, 
                 self.delivery_via, 
@@ -79,7 +79,7 @@ class Patient(ClientObject):
                 self.format_string(self.hometown),
                 self.phone,
                 self.medical_record_num, 
-                self.format_ts(self.attention_datetime),
+                self.attention_datetime,
                 self.attending_resources, 
                 self.origin, 
                 self.age, 
@@ -91,7 +91,7 @@ class Patient(ClientObject):
                 self.mother_name, 
                 self.father_name, 
                 self.delivery_place, 
-                self.format_ts(self.delivery_datetime),
+                self.delivery_datetime,
                 self.gestational_age, 
                 self.delivery_care, 
                 self.delivery_via, 
@@ -115,7 +115,7 @@ class Patient(ClientObject):
                 self.format_string(self.hometown),
                 self.phone,
                 self.medical_record_num, 
-                self.format_ts(self.attention_datetime),
+                self.attention_datetime,
                 self.attending_resources, 
                 self.origin, 
                 self.age, 
@@ -127,7 +127,7 @@ class Patient(ClientObject):
                 self.mother_name, 
                 self.father_name, 
                 self.delivery_place, 
-                self.format_ts(self.delivery_datetime),
+                self.delivery_datetime,
                 self.gestational_age, 
                 self.delivery_care, 
                 self.delivery_via, 
@@ -148,7 +148,7 @@ class Patient(ClientObject):
                 self.format_string(self.hometown),
                 self.phone,
                 self.medical_record_num, 
-                self.format_ts(self.attention_datetime),
+                self.attention_datetime,
                 self.attending_resources, 
                 self.origin, 
                 self.age, 
@@ -160,7 +160,7 @@ class Patient(ClientObject):
                 self.mother_name, 
                 self.father_name, 
                 self.delivery_place, 
-                self.format_ts(self.delivery_datetime),
+                self.delivery_datetime,
                 self.gestational_age, 
                 self.delivery_care, 
                 self.delivery_via, 
@@ -216,7 +216,7 @@ class Patient(ClientObject):
                 ('hometown', cls.make_language_string),
                 ('phone', identity),
                 ('medical_record_num', identity)
-                ('attention_datetime', parse_client_timestamp),
+                ('attention_datetime', identity),
                 ('attending_resources', identity)
                 ('origin', identity)
                 ('age', identity)
@@ -228,7 +228,7 @@ class Patient(ClientObject):
                 ('mother_name', identity)
                 ('father_name', identity)
                 ('delivery_place', identity)
-                ('delivery_datetime', parse_client_timestamp),
+                ('delivery_datetime', identity),
                 ('gestational_age', identity)
                 ('delivery_care', identity)
                 ('delivery_via', identity)
