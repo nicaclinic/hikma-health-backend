@@ -20,7 +20,7 @@ app.register_blueprint(admin_api)
 
 @app.route('/')
 def hello_world():
-    return jsonify({'message': 'Welcome to the Hikma Health backend.',
+    return jsonify({'message': 'Welcome to the Hikma Health backend _ Nica Clinic.',
                     'status': 'OK'})
 
 
