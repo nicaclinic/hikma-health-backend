@@ -1,11 +1,18 @@
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
-    kubernetes.io/ingress.global-static-ip-name: nv-app-ip
+    # kubernetes.io/ingress.global-static-ip-name: hikma-dev-ip
     networking.gke.io/managed-certificates: nv-api-certificate
-  name: nv-service-ingress
+  name: hikma-service-ingress
 spec:
-  backend:
-    serviceName: nv-nodeport-service
-    servicePort: 80
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: nv-nodeport-service
+            port:
+              number: 80
