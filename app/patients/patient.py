@@ -216,7 +216,7 @@ class Patient(ClientObject):
                 ('hometown', cls.make_language_string),
                 ('phone', identity),
                 ('medical_record_num', identity)
-                ('attention_datetime', identity)
+                ('attention_datetime', parse_client_timestamp),
                 ('attending_resources', identity)
                 ('origin', identity)
                 ('age', identity)
@@ -228,7 +228,7 @@ class Patient(ClientObject):
                 ('mother_name', identity)
                 ('father_name', identity)
                 ('delivery_place', identity)
-                ('delivery_datetime', identity)
+                ('delivery_datetime', parse_client_timestamp),
                 ('gestational_age', identity)
                 ('delivery_care', identity)
                 ('delivery_via', identity)
