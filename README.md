@@ -141,6 +141,11 @@ Remove the following lines:
        'hikma-health-backend=gcr.io/$PROJECT_ID/hikma-health-backend:$COMMIT_SHA']
 ```
 
+- name: 'gcr.io/cloud-builders/kubectl'
+  env: ['CLOUDSDK_COMPUTE_ZONE=us-central1-a', 'CLOUDSDK_CONTAINER_CLUSTER=hikma']
+  args: ['set', 'image', 'deployment/hikma-health-backend-nv',
+        'hikma-health-backend=gcr.io/$PROJECT_ID/hikma-health-backend:$COMMIT_SHA']
+
 This deployment does not exist yet, and we can’t make deployment until we create the image, so we must add in the automatic deployment step after the initial deployment.
 
 (When you add this step back in, you will need to update CLOUDSDK_COMPUTE_ZONE and CLOUDSDK_CONTAINER_CLUSTER, deployment name and image name)
