@@ -37,6 +37,8 @@ def upgrade():
       date_of_birth DATE,
       place_of_birth uuid REFERENCES string_ids(id) ON DELETE CASCADE,
       medical_record_num text, 
+      local_id text, 
+      address text, 
       attention_datetime text,
       attending_resources text, 
       origin text, 
