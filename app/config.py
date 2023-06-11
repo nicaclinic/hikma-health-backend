@@ -21,7 +21,7 @@ if ENV in ('dev_local', 'dev_docker', 'stg'):
 
 if ENV == 'prod':
     FLASK_DEBUG = False
-    PG_USER = 'hikma-prod'
+    PG_USER = 'hikma-db-prod'
     PG_PASSWORD = os.environ['DB_PASSWORD']
     PG_HOST = '10.127.208.3'
     PG_DB = 'hikma-db-prod'
