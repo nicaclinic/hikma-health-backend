@@ -321,7 +321,18 @@ COLUMNS = [
     'bodyMassIndexPhysicalExploration',
     'consultationReasonPhysicalExploration',
     'illnessHistoryPhysicalExploration',
-    'objectivePhysicalExploration',
+    'headPhysicalExploration',
+    'eyesPhysicalExploration',
+    'earsNoseMouthPhysicalExploration',
+    'neckPhysicalExploration',
+    'chestPhysicalExploration',
+    'heartPhysicalExploration',
+    'lungFieldsPhysicalExploration',
+    'abdomenPhysicalExploration',
+    'genitalsPhysicalExploration',
+    'skeletalMusclePhysicalExploration',
+    'extremitiesPhysicalExploration',
+    'neurologicalPhysicalExploration',
     'evaluationPhysicalExploration',
     'diagnosisPhysicalExploration',
     'feedingPhysicalExploration',
@@ -437,7 +448,18 @@ COLUMNS = [
     'attendsNameSignPediatricPhysical',
     'consultationReasonPediatricPhysical',
     'illnessHistoryPediatricPhysical',
-    'objectivePediatricPhysical',
+    'headPediatricPhysical',
+    'eyesPediatricPhysical',
+    'earsNoseMouthPediatricPhysical',
+    'neckPediatricPhysical',
+    'chestPediatricPhysical',
+    'heartPediatricPhysical',
+    'lungFieldsPediatricPhysical',
+    'abdomenPediatricPhysical',
+    'genitalsPediatricPhysical',
+    'skeletalMusclePediatricPhysical',
+    'extremitiesPediatricPhysical',
+    'neurologicalPediatricPhysical',
     'evaluationPediatricPhysical',
     'diagnosisPediatricPhysical',
     'feedingPediatricPhysical',
@@ -739,7 +761,18 @@ class PatientDataRow:
     bodyMassIndexPhysicalExploration: str = None
     consultationReasonPhysicalExploration: str = None
     illnessHistoryPhysicalExploration: str = None
-    objectivePhysicalExploration: str = None
+    headPhysicalExploration: str = None
+    eyesPhysicalExploration: str = None
+    earsNoseMouthPhysicalExploration: str = None
+    neckPhysicalExploration: str = None
+    chestPhysicalExploration: str = None
+    heartPhysicalExploration: str = None
+    lungFieldsPhysicalExploration: str = None
+    abdomenPhysicalExploration: str = None
+    genitalsPhysicalExploration: str = None
+    skeletalMusclePhysicalExploration: str = None
+    extremitiesPhysicalExploration: str = None
+    neurologicalPhysicalExploration: str = None
     evaluationPhysicalExploration: str = None
     diagnosisPhysicalExploration: str = None
     feedingPhysicalExploration: str = None
@@ -855,7 +888,18 @@ class PatientDataRow:
     attendsNameSignPediatricPhysical: str = None
     consultationReasonPediatricPhysical: str = None
     illnessHistoryPediatricPhysical: str = None
-    objectivePediatricPhysical: str = None
+    headPediatricPhysical: str = None
+    eyesPediatricPhysical: str = None
+    earsNoseMouthPediatricPhysical: str = None
+    neckPediatricPhysical: str = None
+    chestPediatricPhysical: str = None
+    heartPediatricPhysical: str = None
+    lungFieldsPediatricPhysical: str = None
+    abdomenPediatricPhysical: str = None
+    genitalsPediatricPhysical: str = None
+    skeletalMusclePediatricPhysical: str = None
+    extremitiesPediatricPhysical: str = None
+    neurologicalPediatricPhysical: str = None
     evaluationPediatricPhysical: str = None
     diagnosisPediatricPhysical: str = None
     feedingPediatricPhysical: str = None
