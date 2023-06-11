@@ -327,6 +327,16 @@ def write_physical_exploration_event(row: PatientDataRow, event):
     row.treatingPhysicianPhysicalExploration = data.get('treatingPhysician')
     row.minsaCodePhysicalExploration = data.get('minsaCode')
 
+def write_adult_immunizations_event(row: PatientDataRow, event):
+    data = json.loads(event.event_metadata)
+    row.pneumococcusAdultImmunizations = data.get('pneumococcus')
+    row.influenzaAdultImmunizations = data.get('influenza')
+    row.tetanusAdultImmunizations = data.get('tetanus')
+    row.hepatitisBAdultImmunizations = data.get('hepatitisB')
+    row.covidAdultImmunizations = data.get('covid')
+    row.tbAdultImmunizations = data.get('tb')
+    row.othersAdultImmunizations = data.get('others')
+
 def write_postatal_history_event(row: PatientDataRow, event):
     data = json.loads(event.event_metadata)
     row.apgar = data.get('apgar')

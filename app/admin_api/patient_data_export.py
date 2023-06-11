@@ -4,7 +4,7 @@ from openpyxl import load_workbook
 from events.data_access import events_by_visit, camp_by_patient
 from patients.data_access import patient_from_id
 from users.data_access import user_name_by_id
-from events.event_export import write_vitals_event, write_medical_hx_event, write_examination_event, write_med1_event, write_med2_event, write_med3_event, write_med4_event, write_med5_event, write_physiotherapy_event, write_covid_19_event, write_emergency_attention_event, write_subsequent_evolution_event, write_nursing_note_event, write_ultrasound_consultation_event, write_laboratory_consultation_event, write_odontology_consultation_event, write_family_pathological_history_event, write_socioeconomic_situation_event, write_physical_exploration_event, write_non_pathological_history_event, write_gynecological_background_event, write_pathological_history_event, write_postatal_history_event, write_feeding_event, write_immunization_event, write_psychomotor_development_event, write_pediatric_pathological_event, write_pediatric_physical_event
+from events.event_export import write_vitals_event, write_medical_hx_event, write_examination_event, write_med1_event, write_med2_event, write_med3_event, write_med4_event, write_med5_event, write_physiotherapy_event, write_covid_19_event, write_emergency_attention_event, write_subsequent_evolution_event, write_nursing_note_event, write_ultrasound_consultation_event, write_laboratory_consultation_event, write_odontology_consultation_event, write_family_pathological_history_event, write_socioeconomic_situation_event, write_physical_exploration_event, write_adult_immunizations_event, write_non_pathological_history_event, write_gynecological_background_event, write_pathological_history_event, write_postatal_history_event, write_feeding_event, write_immunization_event, write_psychomotor_development_event, write_pediatric_pathological_event, write_pediatric_physical_event
 from datetime import datetime, timedelta
 from tempfile import NamedTemporaryFile
 import json
@@ -165,6 +165,8 @@ class PatientDataExporter:
                     write_gynecological_background_event(row, event)
                 elif event.event_type == 'Physical exploration':
                     write_physical_exploration_event(row, event)
+                elif event.event_type == "Adult Immunizations":
+                    write_adult_immunizations_event(row, event)
                 elif event.event_type == 'Postnatal history':
                     write_postatal_history_event(row, event)
                 elif event.event_type == 'Feeding':

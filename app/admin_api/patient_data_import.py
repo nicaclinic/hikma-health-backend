@@ -782,6 +782,14 @@ class PatientDataRow:
     treatingPhysicianPhysicalExploration: str = None
     minsaCodePhysicalExploration: str = None
 
+    # Adult Immunizations
+    pneumococcusAdultImmunizations: str = None
+    influenzaAdultImmunizations: str = None
+    tetanusAdultImmunizations: str = None
+    hepatitisBAdultImmunizations: str = None
+    covidAdultImmunizations: str = None
+    tbAdultImmunizations: str = None
+    othersAdultImmunizations: str = None
     # Postatal History
     apgar: str = None
     weightInGrams: str = None
