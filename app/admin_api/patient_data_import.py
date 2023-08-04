@@ -35,6 +35,7 @@ COLUMNS = [
     'origin',
     # 'hometown',
     # 'home_country',
+    'municipality',
     'local_id',
     'address'
     'phone',
@@ -481,6 +482,7 @@ class PatientDataRow:
     surname : str = None
     date_of_birth : str = None
     age : str = None
+    municipality: str = None
     local_id: str = None
     address: str = None
     gender : str = None

@@ -61,6 +61,7 @@ class PatientDataExporter:
                 home_country=patient.country.get('en'),
                 phone=patient.phone,
                 medical_record_num = patient.medical_record_num,
+                municipality = patient.municipality,
                 local_id = patient.local_id,
                 address = patient.address,
                 attention_datetime = patient.attention_datetime,
